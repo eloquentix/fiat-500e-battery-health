@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>500e battery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="car-id">
+    <span class="swatch" aria-hidden="true"></span>
+    <div>
+      <h1 id="car-name">Fiat 500e</h1>
+      <p class="sub" id="car-sub">Battery</p>
+    </div>
+  </div>
+  <div class="mast-right"><div id="link-state" class="link-state" role="status"></div>
+    <a class="report-link" href="/report" target="_blank" rel="noopener">Report ↗</a></div>
+</header>
+
+<main>
+  <p class="verdict" id="verdict">Reading the car…</p>
+  <p class="sim-note" id="sim-note" hidden>Simulated car. It's shaped like your 500e (same modules and data IDs), but every value is made up.</p>
+
+  <section class="charge" aria-labelledby="charge-h">
+    <h2 id="charge-h" class="sr-only">Charge</h2>
+    <div class="charge-head">
+      <span class="charge-num"><span id="soc-dash">–</span><small>% on the dash</small></span>
+      <span class="charge-true" id="soc-true"></span>
+    </div>
+    <div class="charge-bar" id="charge-bar" role="img" aria-label="Charge">
+      <div class="charge-fill" id="charge-fill"></div>
+      <div class="charge-reserve" style="width: 11%"></div>
+    </div>
+    <p class="charge-note">The shaded start of the bar is the reserve the dash never shows: dash 0 % is about 11 % true charge.</p>
+  </section>
+
+  <dl class="stats" id="stats"></dl>
+
+  <section aria-labelledby="cells-h">
+    <div class="sec-head">
+      <h2 id="cells-h">Cell by cell</h2>
+      <p class="legend">Darker means further below the pack average <span class="key key-low"></span>lowest five</p>
+    </div>
+    <div class="pack" id="pack"><p class="empty">No cell voltages yet.</p></div>
+    <p class="note" id="cells-note"></p>
+  </section>
+
+  <section aria-labelledby="dev-h">
+    <div class="sec-head">
+      <h2 id="dev-h">Against the average</h2>
+      <p class="legend">mV above or below the pack average</p>
+    </div>
+    <figure class="chart" id="cells-chart"></figure>
+    <details class="table-view"><summary>Show as a table</summary><div id="cells-table"></div></details>
+  </section>
+
+  <section aria-labelledby="hist-h">
+    <div class="sec-head">
+      <h2 id="hist-h">Over time</h2>
+      <p class="legend" id="hist-note"></p>
+    </div>
+    <div class="pair">
+      <figure class="chart small" id="soh-chart"><figcaption>State of health, %</figcaption></figure>
+      <figure class="chart small" id="spread-chart"><figcaption>Cell spread, mV (highest minus lowest)</figcaption></figure>
+    </div>
+    <details class="table-view"><summary>Show as a table</summary><div id="hist-table"></div></details>
+  </section>
+
+  <section aria-labelledby="src-h">
+    <h2 id="src-h">Where these numbers come from</h2>
+    <table class="sources" id="sources"></table>
+    <p class="note">Not decoded yet: state of health, pack temperatures, current, range. They stay off this page until our own captures pin them down.</p>
+  </section>
+</main>
+
+<footer class="colophon"><p>e500 is read-only. It never writes to the car.</p></footer>
+<div class="tip" id="tip" role="tooltip" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>
